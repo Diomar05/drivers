@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
     },
 
-    nombre_equipo: {
+    team: {
       type: DataTypes.STRING,
       allowNull: false,
     },

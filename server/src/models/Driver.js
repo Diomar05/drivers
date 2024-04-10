@@ -11,37 +11,42 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
     },
 
-    nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    apellido: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [0, 50]
-    }
+      }
+    },
+      
+    lastname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [0, 50]
+      }
+    },
+
+    description: {
+      type: DataTypes.TEXT,
+    },
+
+    image: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+
+    nationality: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    birthdate: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
   },
 
-  descripción: {
-    type: DataTypes.TEXT,
-  },
-
-  imagen: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-
-  nacionalidad: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-
-  fecha_de_nacimiento: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-},
-{ timestamps: false, });
+  { timestamps: false, });
 };
