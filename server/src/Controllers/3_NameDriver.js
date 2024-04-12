@@ -1,6 +1,6 @@
 const { Driver, Teams } = require("../db");
 const axios = require("axios");
-const { Sequelize } = require("sequelize");
+const { Op } = require('sequelize');
 
 function clean(driver) {
   return {
@@ -15,26 +15,38 @@ function clean(driver) {
   };
 }
 
+const URL = 'http://localhost:5000/drivers?name.forename=';
+
 const getNameDriver = async (name) => {
-  const responseApi = await axios.get(
-    `http://localhost:5000/drivers?name.forename=${name}`
-  );
-  const driversApi = responseApi.data.map((driver) => clean(driver));
+    // !Realizo Consulta api
+// const response = await axios.get(`${URL}${name}`);
+ const response = (await axios.get(`${URL}${name}`));
 
-  // Obtiene conductores de la base de datos local
-  const driversDb = await Driver.findAll({
-    where: {
-      name: { [Sequelize.Op.iLike]: `%${name}%` }, 
-      // Búsqueda insensible a mayúsculas y minúsculas
-    },
-    limit: 15,
-  });
+ const driversApi = response.data.map(driver => clean(driver));
 
-  const driversFromDb = driversDb.map((driver) => clean(driver));
+// !Realizo consulta base de Datos Local
+// const dogsDB = await Dogs.findAll({where: {name: {[Op.iLike]:`%${name}%`}}, include: Temperaments});
+   const driversDB = await Driver.findAll({where: {name: {[Op.iLike]:`${name}`}}, 
+    includes: { Teams },
+    limit: 15
+  })
 
-  // Combina y devuelve los resultados
-  const allDrivers = [...driversApi, ...driversFromDb];
-  return allDrivers.slice(0, 15); // Limita a los primeros 15 conductores
-};
+ // Combinar los resultados de ambas consultas
+//  const allDrivers = driversApi.concat(driversDB);
+ const allDrivers = [...driversApi, ...driversDB];
+
+if(!name) {
+    return allDrivers
+} else {
+    const driver = allDrivers.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))
+    // Limpiar los resultados
+ const driverClean = driver.map(dri => clean(dri));
+
+ // Retornar los resultados
+ return driverClean.slice(0, 15);
+ 
+}
+
+}
 
 module.exports = getNameDriver;
