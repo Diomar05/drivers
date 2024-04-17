@@ -15,7 +15,7 @@
 //   };
 // }
 
-// const URL = 'http://localhost:5000/drivers?name.forename=';
+// const URL = 'http://localhost:5000/drivers?name.forename={name}';
 
 // const getNameDriver = async (name) => {
 //   // let allDrivers = [];
