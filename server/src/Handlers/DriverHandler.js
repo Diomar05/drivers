@@ -26,10 +26,10 @@ exports.idDrivers = async(req, res) => {
 
 
 exports.addDriver = async (req, res) => {
-    const { name, lastname,  description, image, nationality, birthdate, team } = req.body
+    const { name, lastname,  description, image, nationality, birthdate, teams } = req.body
 
     try {
-        const response = await getAddDrivers(name, lastname,  description, image, nationality, birthdate, team)
+        const response = await getAddDrivers(name, lastname,  description, image, nationality, birthdate, teams)
         res.status(200).json(response)
     } catch (error) {
         res.status(400).json({error: error.message})

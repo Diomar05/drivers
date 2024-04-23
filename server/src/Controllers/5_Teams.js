@@ -13,12 +13,12 @@ exports.getAllTeams = async () => {
     // Extract solo nombre de equipos
     const uniqueTeams = data
       .map((driver) => driver.teams)
-      .filter((team) => team)
+      .filter((teams) => teams)
       .join(',')
       .split(',')
-      .map((team) => team.trim()) // Trim whitespace from team names
-      .filter((team, index, self) => self.indexOf(team) === index) // Get unique team names
+      .map((teams) => teams.trim()) // Trim whitespace from team names
+      .filter((teams, index, self) => self.indexOf(teams) === index) // Get unique team names
 
-    .map((team) => ({ team: team }));
+    .map((teams) => ({ teams: teams}));
     return Teams.bulkCreate(uniqueTeams)
 }

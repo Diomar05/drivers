@@ -1,0 +1,53 @@
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    background-color: red;
+    margin: 0;
+    padding: 5px;
+}
+
+.Logo{
+    width: 250px;
+    border-radius: 50px;
+}
+
+.nav{
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+}
+
+.button{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    display: inline-block;
+    font-size: 25px;
+    padding: 15px;
+    margin: 3px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px #29c0ce; 
+    text-decoration: none;
+   
+    &:active{
+      transform: scale(0.9);
+      background-color: darken(button-bg, 5%);
+      box-shadow: 0 2px 25px #29c0ce;
+    }
+}
+
+.button:hover{
+    transition: (0,5s);
+    background-color: #29c0ce;
+    color: black;
+    cursor: pointer;
+  }
+
+.Search{
+    padding: 20px;
+    font-size: 20px;
+}

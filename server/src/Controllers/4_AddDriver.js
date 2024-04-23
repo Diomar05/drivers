@@ -28,7 +28,50 @@ const { Driver, Teams } = require("../db");
 //     }
 //   };
 
-const getAddDrivers = async( name, lastname, description, image, nationality, birthdate, team) => {
+// const getAddDrivers = async( name, lastname, description, image, nationality, birthdate, teams) => {
+
+
+//   if (
+//     !name ||
+//     !lastname || 
+//     !description ||
+//     !image || 
+//     !nationality || 
+//     !birthdate || 
+//     !teams
+//   ) {
+//     throw new Error("Faltan datos");
+//   } 
+
+//     const existDriver = await Driver.findOne({ where: {name: name}})
+
+//     if (existDriver) {
+//       return "Ya existe un conductor con ese nombre"
+//     }else {
+//       const newDriver = await Driver.create({
+        
+//           name: name,
+//           lastname: lastname,
+//           description: description,
+//           image: image,
+//           nationality: nationality,
+//           birthdate: birthdate,
+//     });
+
+//     const teamFound = await Teams.findAll({
+//       where: { teams },
+//     });
+
+//       await newDriver.addTeam(teamFound);
+//       return newDriver;
+//     }
+
+
+// };
+
+// module.exports = getAddDrivers;
+
+const getAddDrivers = async( name, lastname, description, image, nationality, birthdate, teams) => {
 
 
   if (
@@ -38,7 +81,7 @@ const getAddDrivers = async( name, lastname, description, image, nationality, bi
     !image || 
     !nationality || 
     !birthdate || 
-    !team
+    !teams
   ) {
     throw new Error("Faltan datos");
   } 
@@ -56,15 +99,16 @@ const getAddDrivers = async( name, lastname, description, image, nationality, bi
           image: image,
           nationality: nationality,
           birthdate: birthdate,
+          teams: await Teams.findAll({
+            where: { teams },
+          })
     });
 
+    // const teamFound = await Teams.findAll({
+    //   where: { teams },
+    // });
 
-
-    const teamFound = await Teams.findAll({
-      where: { team },
-    });
-
-      await newDriver.addTeam(teamFound);
+      // await newDriver.addTeam(teamFound);
       return newDriver;
     }
 
@@ -72,3 +116,4 @@ const getAddDrivers = async( name, lastname, description, image, nationality, bi
 };
 
 module.exports = getAddDrivers;
+
