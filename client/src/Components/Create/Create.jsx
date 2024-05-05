@@ -1,6 +1,8 @@
+import React from 'react'
+
 const Create = () => {
     return ( 
-        <div>
+        <div > 
             <h1>Create</h1>
         </div>
      );

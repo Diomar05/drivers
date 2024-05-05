@@ -38,21 +38,13 @@ const getAllDrivers = async () => {
   }
 );
 
-
   const combinedDrivers = driversDb.map((driver) => ({
     ...driver.dataValues,
 
-  
 teams: driver.Teams.map((team) => team.dataValues.teams),  
 }));
 
-
 return [...combinedDrivers, ...driversApi]; // Combinar los resultados
-
-
-
-
-
 
   // return [...driversDb, driversApi];
 };
