@@ -46,8 +46,6 @@ function handleClickCreated(order) {
   dispatch(filterCreated(order));
 }
 
-  
-
   return (
     <div className={styles.container}>
       <div>
@@ -62,8 +60,7 @@ function handleClickCreated(order) {
       <hr />
 
       <div>
-        <button onClick={handleReset}>Reiniciar</button>{" "}
-        {/* Botón para reiniciar */}
+        <button onClick={handleReset}>Reiniciar</button>
       </div>
 
       <div>
@@ -75,13 +72,11 @@ function handleClickCreated(order) {
       <div>
         <h5>Orden de Nacimiento</h5>
         <button onClick={() => handleClickorderByBirthdate('asc')}>Cumpleaños</button>
-        {/* <button onClick={() => handleClickorderByBirthdate('desc')}>Z - A</button> */}
       </div>
 
       <div>
         <h5>Orden de Equipos</h5>
         <button onClick={() => handleClickorderByTeams('asc')}>Equipos</button>
-        {/* <button onClick={() => handleClickorderByTeams('desc')}>Z - A</button> */}
       </div>
 
       <div>

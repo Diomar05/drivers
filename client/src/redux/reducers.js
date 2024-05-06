@@ -3,7 +3,8 @@ const initialState = {
     allDrivers: [],
     teams: [],
     details: [],
-    allDriversFilter: []
+    allDriversFilter: [],
+    listTeams: []
   };
   
   const rootReducer = (state = initialState, action) => {
@@ -84,8 +85,14 @@ const initialState = {
             case 'GET_TEAMS_LIST':
             return {
                 ...state,
-                teams: action.payload
+                listTeams: action.payload
             }
+
+              case 'POST_DRIVER':
+              return {
+                  ...state,
+                  drivers: action.payload
+              }
 
 
             case 'GET_DETAIL':

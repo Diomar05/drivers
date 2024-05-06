@@ -84,7 +84,10 @@ export const getDetail = (id) => {
 export function postDriver(payload) {
   return async function (dispatch) {
       const response = await axios.post('http://localhost:3001/drivers', payload);
-      return response;
+      return dispatch({
+        type: 'POST_DRIVER',
+        payload: response.data
+      });
   }
 }
 
